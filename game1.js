@@ -227,22 +227,22 @@ resetButton.addEventListener('click', () => {
 // Function to play music when needed
 function playMusic(win = false, lost = false, slogan = false, draw = false, p1add = false, p2add = false) {
     if (win) {
-        currentAudio = new Audio('/audio/win.wav');
+        currentAudio = new Audio('audio/win.wav');
         currentAudio.play();
     } else if (lost) {
-        currentAudio = new Audio('/audio/lost.wav');
+        currentAudio = new Audio('audio/lost.wav');
         currentAudio.play();
     } else if (slogan) {
-        currentAudio = new Audio('/audio/slogan.mp3');
+        currentAudio = new Audio('audio/slogan.mp3');
         currentAudio.play();
     } else if (draw) {
-        currentAudio = new Audio('/audio/draw.mp3');
+        currentAudio = new Audio('audio/draw.mp3');
         currentAudio.play();
     } else if (p1add) {
-        currentAudio = new Audio('/audio/p1add.wav');
+        currentAudio = new Audio('audio/p1add.wav');
         currentAudio.play();
     } else if (p2add) {
-        currentAudio = new Audio('/audio/p2add.wav');
+        currentAudio = new Audio('audio/p2add.wav');
         currentAudio.play();
     }
 }
