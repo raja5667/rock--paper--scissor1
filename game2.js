@@ -202,7 +202,7 @@ function playMusic(win = false, lost = false, slogan = false, draw = false, p1ad
         currentAudio = new Audio('/audio/lost.wav');
         currentAudio.play();
     } else if (slogan) {
-        currentAudio = new Audio('audio/slogan.mp3');
+        currentAudio = new Audio('rock, paper, scissor1/audio/slogan.mp3');
         currentAudio.play();
     } else if (draw) {
         currentAudio = new Audio('/audio/draw.mp3');
