@@ -7,10 +7,10 @@ function toggleVolume() {
 
     if (backgroundMusic.paused) {
         backgroundMusic.play();
-        volumeIcon.src = '/svg/volume-up-svgrepo-com.svg';  // Change icon to volume-up
+        volumeIcon.src = 'svg/volume-up-svgrepo-com.svg';  // Change icon to volume-up
     } else {
         backgroundMusic.pause();
-        volumeIcon.src = '/svg/volume-off-svgrepo-com.svg';  // Change icon to volume-off
+        volumeIcon.src = 'svg/volume-off-svgrepo-com.svg';  // Change icon to volume-off
     }
 }
 

@@ -1,3 +1,19 @@
+const playBackgroundMusic = document.getElementById('BackgroundMusic');
+playBackgroundMusic.volume = 0.3;
+
+function toggleVolume() {
+    const volumeIcon = document.getElementById('volume-icon');
+    const backgroundMusic = document.getElementById('BackgroundMusic');
+
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        volumeIcon.src = 'svg/volume-up-svgrepo-com.svg';  // Change icon to volume-up
+    } else {
+        backgroundMusic.pause();
+        volumeIcon.src = 'svg/volume-off-svgrepo-com.svg';  // Change icon to volume-off
+    }
+}
+
 const p1ScoreEl = document.querySelector('.P1');
 const p2ScoreEl = document.querySelector('.P2');
 let game1Options = document.querySelectorAll('.box');
