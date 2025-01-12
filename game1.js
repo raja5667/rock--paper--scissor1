@@ -184,23 +184,7 @@ function showNotification(message, isFullScreen = false, isFullScreen2 = false) 
 }
 
 // Add Reset Button
-const resetButton = document.createElement('button');
-resetButton.textContent = 'Reset Game';
-resetButton.style.cssText = `
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    background-color: #fc5c8c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-`;
-document.body.appendChild(resetButton);
+const resetButton = document.getElementById('reset-button');
 
 // Reset Scores and UI
 resetButton.addEventListener('click', () => {

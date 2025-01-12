@@ -22,16 +22,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     position: relative;
 }
 
+.btn {
+    width: 100%;
+    padding: 0 20px 0 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
 .volume {
-    position: absolute;
-    /* Absolute positioning relative to the parent container */
-    top: 20px;
-    /* Distance from the top of the container */
-    right: 20px;
-    /* Distance from the right side */
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -86,9 +91,6 @@ body {
 }
 
 .home {
-    position: absolute;
-    top: 20px;
-    left: 20px;
     width: 60px;
     height: 60px;
     border: none;
@@ -123,8 +125,8 @@ body {
 
 /* Scoreboard styles */
 .scoreboard {
-    position: absolute;
-    top: 120px;
+    position: relative;
+    top: 32px;
     display: flex;
     gap: 20px;
     font-size: 20px;
@@ -136,7 +138,7 @@ body {
 .P2::before {
     content: '';
     border: 2px solid rgb(0, 255, 68);
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 /* List styling for game options */
@@ -187,7 +189,8 @@ body {
 }
 
 /* Box styling for game choices */
-.box, .pl2 {
+.box,
+.pl2 {
     background: linear-gradient(135deg, #adcc2e, #133b0e);
     padding: 5px;
     height: 80px;
@@ -198,63 +201,47 @@ body {
     cursor: pointer;
     position: relative;
     border-radius: 8px;
-    /* transition: box-shadow 0.3s; */
-    transition: transform 2s, opacity 2s;  /* Smooth transition for scaling and fading */
+    transition: box-shadow 0.3s;
 }
 
-.box:hover, .pl2:hover{
+.box:hover,
+.pl2:hover {
     box-shadow: 0 0 10px rgba(0, 255, 204, 0.8), 0 0 20px rgba(0, 255, 204, 0.5);
 }
 
-/* Box glowing effect */
-.box::before, .pl2::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    z-index: -1;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #ff007f, #00c6ff, #ff007f);
-    animation: pulse 2s infinite;
-}
-
 /* SVG inside box */
-.box img, .pl2 img {
+.box img,
+.pl2 img {
     max-width: 70%;
     max-height: 70%;
     object-fit: contain;
 }
 
-/* Pulse animation for glowing effect */
-@keyframes pulse {
-    0% {
-        opacity: 0.5;
-        transform: scale(1);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-
-    100% {
-        opacity: 0.5;
-        transform: scale(1);
-    }
+.reset {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #fc5c8c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
-
-/* Media queries for responsiveness */
 
 /* For tablets and smaller screens */
 @media (max-width: 768px) {
     .main-page {
+        height: 100%;
         flex-direction: column;
-        height: auto;
         padding: 20px;
     }
 
     .list {
+        margin: 0;
         flex-direction: column;
         gap: 30px;
+        transform: rotate(180deg);
     }
 
     .card1,
@@ -263,9 +250,28 @@ body {
         height: 250px;
     }
 
-    .box, .pl2 {
-        height: 60px;
-        width: 60px;
+    .box,
+    .pl2 {
+        height: 70px;
+        width: 70px;
+    }
+
+    .game1 {
+        transform: rotate(180deg);
+    }
+
+    .scoreboard {
+        top: 400px;
+        right: 55%;
+        transform: rotate(-90deg);
+        font-size: 20px;
+        gap: 10px;
+    }
+
+    .reset {
+        position: relative;
+        top: 0%;
+        bottom: 50%;
     }
 }
 
@@ -277,16 +283,18 @@ body {
 
     .card1,
     .card2 {
-        width: 200px;
-        height: 200px;
+        width: 220px;
+        height: 220px;
     }
 
-    .box, .pl2 {
-        height: 50px;
-        width: 50px;
+    .box,
+    .pl2 {
+        height: 60px;
+        width: 60px;
     }
 
     .scoreboard {
+        top: 358px;
         font-size: 16px;
         gap: 10px;
     }

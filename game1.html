@@ -16,9 +16,12 @@
     <div class="container">
         <div class="main">
             <section class="main-page">
-                <button class="home"><a href="index.html"><img src="svg/left-arrow-return-svgrepo-com.svg" alt="home"></a></button>
-                <button class="volume" onclick="toggleVolume()"><img id="volume-icon" src="svg/volume-up-svgrepo-com.svg"
-                        alt="Volume"></button>
+                <div class="btn">
+                    <button class="home"><a href="index.html"><img src="svg/left-arrow-return-svgrepo-com.svg"
+                                alt="home"></a></button>
+                    <button class="volume" onclick="toggleVolume()"><img id="volume-icon"
+                            src="svg/volume-up-svgrepo-com.svg" alt="Volume"></button>
+                </div>
                 <div class="cover">
                     <div class="scoreboard">
                         <h4 class="P1" style="color: blue;">P1 - 0</h4>
@@ -70,6 +73,7 @@
                             </div>
                         </li>
                     </ul>
+                    <button id="reset-button" class="reset">Reset Game</button>
                 </div>
             </section>
         </div>
