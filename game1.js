@@ -289,12 +289,12 @@ function playRound(playerChoice, gameOptions, computerChoice) {
         }
 
         // Check if a player wins the game
-        if (p1Score === 1) {
+        if (p1Score === 5) {
             showNotification("You win the game!", true); // Full-screen notification
             gameOver = true;
             toggleGameOptions(false); // Disable game options
             playMusic(true); // Play music when Player 1 wins
-        } else if (p2Score === 1) {
+        } else if (p2Score === 5) {
             showNotification("Bot wins the game!", false, true); // Full-screen notification
             gameOver = true;
             toggleGameOptions(false); // Disable game options

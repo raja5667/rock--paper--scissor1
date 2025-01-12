@@ -133,12 +133,12 @@ function playRound(p1, p2) {
         player2Choice = null;
         toggleGameOptions(true);
 
-        if (p1Score === 1) {
+        if (p1Score === 5) {
             showNotification("Player 1 wins the game!", true);
             gameOver = true;
             playMusic(true);
             toggleGameOptions(false);
-        } else if (p2Score === 1) {
+        } else if (p2Score === 5) {
             showNotification("Player 2 wins the game!", false, true);
             gameOver = true;
             playMusic(true);
