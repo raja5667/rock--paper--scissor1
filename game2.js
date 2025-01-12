@@ -133,12 +133,12 @@ function playRound(p1, p2) {
         player2Choice = null;
         toggleGameOptions(true);
 
-        if (p1Score === 5) {
+        if (p1Score === 1) {
             showNotification("Player 1 wins the game!", true);
             gameOver = true;
             playMusic(true);
             toggleGameOptions(false);
-        } else if (p2Score === 5) {
+        } else if (p2Score === 1) {
             showNotification("Player 2 wins the game!", false, true);
             gameOver = true;
             playMusic(true);
@@ -160,25 +160,87 @@ function setupGame(options, gameNumber) {
 setupGame(game1Options, 1);
 setupGame(game2Options, 2);
 
-// Function to show notifications
 function showNotification(message, isFullScreen = false, isFullScreen2 = false) {
     const notification = document.createElement('div');
     notification.textContent = message;
 
-    // Apply styles for full-screen notification
+    // Apply styles for full-screen notifications
     if (isFullScreen) {
-        notification.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(101, 106, 233, 0.52); color: white; display: flex; justify-content: center; align-items: center; font-size: 2rem; font-weight: bold; z-index: 10000;`;
+        notification.style.cssText = `
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh; 
+            background: rgba(101, 106, 233, 0.52); 
+            color: white; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            font-size: 2rem; 
+            font-weight: bold; 
+            z-index: 10000;`;
     } else if (isFullScreen2) {
-        notification.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(232, 67, 67, 0.52); color: white; display: flex; justify-content: center; align-items: center; font-size: 2rem; font-weight: bold; z-index: 10000;`;
+        notification.style.cssText = `
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh; 
+            background: rgba(232, 67, 67, 0.52); 
+            color: white; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            font-size: 2rem; 
+            font-weight: bold; 
+            z-index: 10000;`;
     } else {
-        notification.style.cssText = `position: absolute; top: 10px; right: 10px; background: #ffcc00; color: #000; padding: 10px 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); z-index: 1000;`;
+        notification.style.cssText = `
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
+            background: #ffcc00; 
+            color: #000; 
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+            z-index: 1000;`;
     }
 
+    // Append the notification to the DOM
     document.body.appendChild(notification);
 
+    // Handle responsiveness dynamically
+    const handleResize = () => {
+        if (window.innerWidth <= 768) {
+            if (!isFullScreen && !isFullScreen2) {
+                notification.style.top = '56%';
+                notification.style.right = '75%';
+                notification.style.transform = 'rotate(-90deg)';
+            } else if (isFullScreen2) {
+                notification.style.transform = 'rotate(180deg)';
+            }
+        } else {
+            if (!isFullScreen && !isFullScreen2) {
+                notification.style.top = '10px';
+                notification.style.right = '10px';
+                notification.style.transform = 'none';
+            } else if (isFullScreen2) {
+                notification.style.transform = 'none';
+            }
+        }
+    };
+
+    // Apply initial styles and set up a resize listener
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    // Remove the notification after 3 seconds
     setTimeout(() => {
         notification.remove();
-    }, 3000); // Auto-dismiss after 3 seconds
+        window.removeEventListener('resize', handleResize); // Clean up the listener
+    }, 3000);
 }
 
 // Add Reset Button

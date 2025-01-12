@@ -176,11 +176,35 @@ function showNotification(message, isFullScreen = false, isFullScreen2 = false) 
         `;
     }
 
+    // Append the notification to the DOM
     document.body.appendChild(notification);
 
+    // Handle responsiveness dynamically
+    const handleResize = () => {
+        if (window.innerWidth <= 768) {
+            if (!isFullScreen && !isFullScreen2) {
+                notification.style.top = '56%';
+                notification.style.right = '75%';
+                notification.style.transform = 'rotate(-90deg)';
+            }
+        } else {
+            if (!isFullScreen && !isFullScreen2) {
+                notification.style.top = '10px';
+                notification.style.right = '10px';
+                notification.style.transform = 'none';
+            }
+        }
+    };
+
+    // Apply initial styles and set up a resize listener
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    // Remove the notification after 3 seconds
     setTimeout(() => {
         notification.remove();
-    }, 3000); // Auto-dismiss after 3 seconds
+        window.removeEventListener('resize', handleResize); // Clean up the listener
+    }, 3000);
 }
 
 // Add Reset Button
@@ -261,12 +285,12 @@ function playRound(playerChoice, gameOptions, computerChoice) {
         }
 
         // Check if a player wins the game
-        if (p1Score === 5) {
+        if (p1Score === 1) {
             showNotification("You win the game!", true); // Full-screen notification
             gameOver = true;
             toggleGameOptions(false); // Disable game options
             playMusic(true); // Play music when Player 1 wins
-        } else if (p2Score === 5) {
+        } else if (p2Score === 1) {
             showNotification("Bot wins the game!", false, true); // Full-screen notification
             gameOver = true;
             toggleGameOptions(false); // Disable game options
