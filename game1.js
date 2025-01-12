@@ -187,6 +187,10 @@ function showNotification(message, isFullScreen = false, isFullScreen2 = false) 
                 notification.style.right = '75%';
                 notification.style.transform = 'rotate(-90deg)';
             }
+        } if (window.innerWidth <= 480) {
+            if (!isFullScreen && !isFullScreen2) {
+                notification.style.display = 'none';
+            }
         } else {
             if (!isFullScreen && !isFullScreen2) {
                 notification.style.top = '10px';
